@@ -1,1 +1,8 @@
 # x64-Assembly-Windows-API
+
+🛠️ x64 Assembly Windows API IntegrationA low-level exploration of the Windows x64 calling convention and direct User32.dll interaction. This project demonstrates the implementation of an infinite execution loop utilizing the MessageBoxA function at the instruction level.📝 OverviewThis repository contains a minimalist implementation of a persistent UI notification system written in pure x86-64 Assembly (Intel Syntax). By bypassing high-level abstractions, the code interacts directly with the Windows kernel-mode subsystems to manage process flow and graphical interrupts.Key Features:Direct API Linkage: Static linking via User32.dll and Kernel32.dll.Stack Alignment: Manual shadow space allocation (sub rsp, 40) to satisfy Windows x64 ABI requirements.Persistent Logic: Recursive jump implementation for state-machine simulation.Zero Dependency: Compiled into a standalone native binary.🚀 Technical SpecificationsComponentSpecificationArchitecturex86-64 (AMD64)AssemblerNASM (Netwide Assembler)LinkerGoLink (x64 version)SubsystemWindows Console / GUIInstruction SetIntel🛠️ Build InstructionsTo assemble and link the source code into a portable executable, execute the following commands in the project directory:Bash# Assemble the source into a 64-bit object file
+nasm -f win64 main.asm -o main.obj
+
+# Link the object file with necessary Windows libraries
+GoLink /entry main /console user32.dll kernel32.dll main.obj
+⚠️ DisclaimerThis project is intended for educational purposes only. It demonstrates a non-terminating loop logic. To terminate the process, manual intervention via Task Manager (End Task: main.exe) is required as the exit sequence is intentionally bypassed for flow-control demonstration.
